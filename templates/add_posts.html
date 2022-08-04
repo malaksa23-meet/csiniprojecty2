@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sticky notes </title> 
+    
+    <!---<link rel="stylesheet" href="src/add_posts.css">--->
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/add_posts.css') }}">
+    <script src="src/add_posts.js" defer></script>
+
+   <style >
+       * {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+    color: #34495e;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.logo {
+    margin: 0;
+    font-size: 1.45em;
+}
+
+.main-nav {
+    margin-top: 5px;
+
+}
+.logo a,
+.main-nav a {
+    padding: 10px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+}
+
+.main-nav a {
+    color: #34495e;
+    font-size: .99em;
+}
+
+.main-nav a:hover {
+    color: #718daa;
+}
+
+
+
+.header {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border: 1px solid #a2a2a2;
+    background-color: #f4f4f4;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+    .header,
+    .main-nav {
+        display: flex;
+    }
+    .header {
+        flex-direction: column;
+        align-items: center;
+        .header{
+        width: 80%;
+        margin: 0 auto;
+        max-width: 1150px;
+    }
+    }
+
+}
+
+@media (min-width: 1025px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
+div{
+ background-image: url("https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg");
+}
+  </style>
+
+   
+
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="logo"><a href="#">Malak Sawaed</a></h1>
+      <ul class="main-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/signup">SignUp</a></li>
+          <li><a href="/signin">SignIn</a></li>
+   
+      </ul>
+    </header> 
+
+    
+ 
+
+    <form method="POST" action="/add_posts">
+        <style>  
+            div{background-image: url("https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg");}
+
+
+        </style>
+        <title>Post :</title>
+
+        <label>Title :</label>
+        <input type="text" name= "title" maxlength="280">
+
+
+        <label>Text :</label>
+        <input type="text" name= "text" maxlength="280">
+        <div id ="app">
+{% for i in all_posts%}
+        
+<textarea class  ="note"> 
+ Title: {{i['title']}}
+ Text: {{i['text']}}
+</textarea>
+{%endfor%} 
+
+
+
+<button class = "add-note" type="button">+</button>
+</div>
+        <input type="submit" >
+
+
+    </form>
+    {{ error }}
+
+
+    <button type="button" onclick=window.location.href="{{url_for('sign_out')}}"> sign out :</button> 
+
+    <script type="text/javascript">
+        $("#search-icon").click(function() {
+  $(".nav").toggleClass("search");
+  $(".nav").toggleClass("no-search");
+  $(".search-input").toggleClass("search-active");
+});
+
+$('.menu-toggle').click(function(){
+   $(".nav").toggleClass("mobile-nav");
+   $(this).toggleClass("is-active");
+});
+
+    </script>
+</body>
+</html>

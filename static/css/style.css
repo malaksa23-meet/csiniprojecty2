@@ -1,0 +1,19 @@
+body{
+color: rgb(250, 250, 250);
+text-align: center;
+  background-image: url("bg.jpg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+   background-size: cover;  
+   font-size: 100;
+   margin: 0%;
+   padding: 0%;
+}
+div {
+   /* Background pattern from Toptal Subtle Patterns */
+   background-image: url("https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg");
+   height: 650px;
+   width: 100%;
+}
+
+
